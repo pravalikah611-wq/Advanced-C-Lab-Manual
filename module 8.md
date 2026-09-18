@@ -16,19 +16,57 @@ Algorithm:
  
 Program:
 
-//type your code here
+#include <stdio.h>
 
+int main()
+{
+    int n;
+
+    printf("Enter a number: ");
+    scanf("%d", &n);
+
+    switch(n)
+    {
+        case 1:
+            printf("one");
+            break;
+        case 2:
+            printf("two");
+            break;
+        case 3:
+            printf("three");
+            break;
+        case 4:
+            printf("four");
+            break;
+        case 5:
+            printf("five");
+            break;
+        case 6:
+            printf("six");
+            break;
+        case 7:
+            printf("seven");
+            break;
+        case 8:
+            printf("eight");
+            break;
+        case 9:
+            printf("nine");
+            break;
+        default:
+            printf("Greater than 9");
+    }
+
+    return 0;
+}
 
 
 
 Output:
 
 
-//paste your output here
-
-
-
-
+<img width="1810" height="715" alt="image" src="https://github.com/user-attachments/assets/ccd11c5a-0da5-485e-b580-bd19567d7071" />
 
 
 Result:
@@ -46,16 +84,42 @@ Algorithm:
 6.	End
  
 Program:
+#include <stdio.h>
 
-//type your code here
+int main()
+{
+    char a[50];
+    int c, i, j, h;
+
+    scanf("%[^\n]", a);
+
+    h = 0;
+
+    while (h < 4)
+    {
+        c = 0;
+
+        for (i = 0; a[i] != '\0'; i++)
+        {
+            if (a[i] == '0' + h)
+            {
+                c++;
+            }
+        }
+
+        printf("%d ", c);
+        h++;
+    }
+
+    return 0;
+}
+
+
 
 
 
 
 Output:
-
-
-//paste your output here
 
 
 
@@ -84,19 +148,94 @@ Free the memory allocated for each string in s Free the memory allocated for s
  
 Program:
 
-//type your code here
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+void swap(char *a, char *b)
+{
+    char temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+void permute(char *s, int l, int r)
+{
+    int i;
+
+    if (l == r)
+    {
+        printf("%s\n", s);
+        return;
+    }
+
+    for (i = l; i <= r; i++)
+    {
+        swap(&s[l], &s[i]);
+        permute(s, l + 1, r);
+        swap(&s[l], &s[i]);
+    }
+}
+
+int compare(const void *a, const void *b)
+{
+    return strcmp(*(const char **)a, *(const char **)b);
+}
+
+int main()
+{
+    char **s;
+    int n, i;
+
+    printf("Enter number of strings: ");
+    scanf("%d", &n);
+
+    s = (char **)malloc(n * sizeof(char *));
+
+    if (s == NULL)
+    {
+        printf("Memory allocation failed.\n");
+        return 1;
+    }
+
+    for (i = 0; i < n; i++)
+    {
+        s[i] = (char *)malloc(50 * sizeof(char));
+
+        if (s[i] == NULL)
+        {
+            printf("Memory allocation failed.\n");
+            return 1;
+        }
+
+        printf("Enter string %d: ", i + 1);
+        scanf("%s", s[i]);
+    }
+
+    printf("\nPermutations:\n");
+
+    for (i = 0; i < n; i++)
+    {
+        printf("\nPermutations of %s:\n", s[i]);
+        permute(s[i], 0, strlen(s[i]) - 1);
+    }
+
+    for (i = 0; i < n; i++)
+    {
+        free(s[i]);
+    }
+
+    free(s);
+
+    return 0;
+}
 
 
 
 
 Output:
 
-
-//paste your output here
-
-
-
-
+<img width="1795" height="761" alt="image" src="https://github.com/user-attachments/assets/6448661f-7aec-4d9f-9d05-26344153944b" />
 
 
 Result:
@@ -117,7 +256,40 @@ Algorithm:
  
 Program:
 
-//type your code here
+#include <stdio.h>
+
+int main()
+{
+    int n, i, j, min, len;
+
+    printf("Enter n: ");
+    scanf("%d", &n);
+
+    len = n * 2 - 1;
+
+    for (i = 0; i < len; i++)
+    {
+        for (j = 0; j < len; j++)
+        {
+            min = i;
+
+            if (j < min)
+                min = j;
+
+            if (len - 1 - i < min)
+                min = len - 1 - i;
+
+            if (len - 1 - j < min)
+                min = len - 1 - j;
+
+            printf("%d ", n - min);
+        }
+
+        printf("\n");
+    }
+
+    return 0;
+}
 
 
 
@@ -125,10 +297,7 @@ Program:
 Output:
 
 
-//paste your output here
-
-
-
+<img width="1878" height="816" alt="image" src="https://github.com/user-attachments/assets/b27584d5-4d61-4249-98ff-456df10b62b1" />
 
 
 
@@ -156,7 +325,28 @@ o	Call the square() function and display the result.
 
 Program:
 
-//type your code here
+#include <stdio.h>
+
+int square()
+{
+    int n;
+
+    printf("Enter a number: ");
+    scanf("%d", &n);
+
+    return n * n;
+}
+
+int main()
+{
+    int result;
+
+    result = square();
+
+    printf("Square = %d\n", result);
+
+    return 0;
+}
 
 
 
@@ -164,11 +354,7 @@ Program:
 Output:
 
 
-//paste your output here
-
-
-
-
+<img width="1907" height="776" alt="image" src="https://github.com/user-attachments/assets/01cf9964-7dfa-4f1e-9786-a5c6f4e6ecec" />
 
 
 Result:
